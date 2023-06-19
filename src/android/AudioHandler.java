@@ -62,8 +62,11 @@ public class AudioHandler extends CordovaPlugin {
     private int origVolumeStream = -1;
     private CallbackContext messageChannel;
 
-
-    public static String [] permissions = { Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_MEDIA_AUDIO};
+    public static String READ_AUDIO_PERMISSION =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ?
+            Manifest.permission.READ_MEDIA_AUDIO : Manifest.permission.READ_EXTERNAL_STORAGE;
+       
+    public static String [] permissions = { Manifest.permission.RECORD_AUDIO, READ_AUDIO_PERMISSION};
     public static int RECORD_AUDIO = 0;
     public static int WRITE_EXTERNAL_STORAGE = 1;
 
